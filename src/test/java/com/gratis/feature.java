@@ -28,7 +28,7 @@ public class feature {
 
         ciltBakimiPage.validateCheckBoxes();
 
-        // chooseOneProduct();
+        ciltBakimiPage.chooseOneProduct();
 
         // textToExcelColumn("ürün bilgisi", writeExcelFile()[0]);
 

@@ -4,6 +4,7 @@ import com.utils.BrowserUtils;
 import com.utils.Driver;
 import com.utils.TestBase;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -27,6 +28,11 @@ public class CiltBakimi extends TestBase {
     // //ul[@data-bind='foreach: visibleRefinements']//li
     @FindBy(xpath = "//ul[@data-bind='foreach: visibleRefinements']//span[@class='filter-value']")
     public List<WebElement> chosenCheckBoxes;
+
+    // //img[@class='bg-product-image ccLazyLoaded']
+    @FindBy(xpath = "//div[@class='view']//img[@class='bg-product-image ccLazyLoaded']")
+    public List<WebElement> allProducts;
+
 
 
     public void chooseCheckBoxes(){
@@ -83,5 +89,26 @@ public class CiltBakimi extends TestBase {
         Assert.assertEquals(expectedSecondProduct,secondProduct);
 
     }
+
+    public void chooseOneProduct(){
+
+        JavascriptExecutor js = (JavascriptExecutor) Driver.get();
+        js.executeScript("window.scrollBy(0,750)");
+
+        BrowserUtils.waitFor(5);
+        System.out.println("products.size() = " + allProducts.size());
+
+        Random rn = new Random();
+        int randomNumber = rn.nextInt(allProducts.size());
+        System.out.println("randomNumber = " + randomNumber);
+
+        BrowserUtils.waitFor(1);
+        WebElement element = allProducts.get(randomNumber);
+
+        js.executeScript("arguments[0].click();", element);
+
+    }
+
+
 
 }

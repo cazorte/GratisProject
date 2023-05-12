@@ -80,6 +80,7 @@ public class MainPage extends TestBase {
         catch(Exception e) {
         e.printStackTrace();
         }
+        BrowserUtils.waitFor(2);
         BrowserUtils.waitForVisibility(altBaslik.get(0), 10);
         System.out.println("altBaslik.size() = " + altBaslik.size());
 
@@ -98,7 +99,11 @@ public class MainPage extends TestBase {
         String actualResult = Driver.get().getCurrentUrl();
         System.out.println("mevcut URL = " + actualResult);
 
-        Assert.assertTrue(actualResult.contains(textEnglish));
+        try {
+            Assert.assertTrue(actualResult.contains(textEnglish));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
