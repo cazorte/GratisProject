@@ -2,6 +2,7 @@ package com.gratis;
 
 import com.gratis.pages.CiltBakimi;
 import com.gratis.pages.MainPage;
+import com.gratis.pages.ProductPage;
 import com.utils.TestBase;
 import org.junit.Test;
 
@@ -13,6 +14,8 @@ public class feature {
 
     MainPage mainPage = new MainPage();
     CiltBakimi ciltBakimiPage = new CiltBakimi();
+    ProductPage productPage = new ProductPage();
+
     @Test
     public void e2eTest() {
 
@@ -30,9 +33,9 @@ public class feature {
 
         ciltBakimiPage.chooseOneProduct();
 
-        // textToExcelColumn("ürün bilgisi", writeExcelFile()[0]);
+        productPage.textToExcelColumn("ürün bilgisi", 1);
 
-        // textToExcelColumn("ürün tutarı", writeExcelFile()[1]);
+        productPage.textToExcelColumn("ürün tutarı", 2);
 
         // addToBasket();
 

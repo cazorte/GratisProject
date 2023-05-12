@@ -33,6 +33,9 @@ public class CiltBakimi extends TestBase {
     @FindBy(xpath = "//div[@class='view']//img[@class='bg-product-image ccLazyLoaded']")
     public List<WebElement> allProducts;
 
+    @FindBy(xpath = "//div[@class='view']//img[@class='bg-product-image']")
+    public List<WebElement> allProductsAlternatif;
+
 
 
     public void chooseCheckBoxes(){
@@ -91,6 +94,8 @@ public class CiltBakimi extends TestBase {
     }
 
     public void chooseOneProduct(){
+        Random rn = new Random();
+        int randomNumber;
 
         JavascriptExecutor js = (JavascriptExecutor) Driver.get();
         js.executeScript("window.scrollBy(0,750)");
@@ -98,9 +103,15 @@ public class CiltBakimi extends TestBase {
         BrowserUtils.waitFor(5);
         System.out.println("products.size() = " + allProducts.size());
 
-        Random rn = new Random();
-        int randomNumber = rn.nextInt(allProducts.size());
-        System.out.println("randomNumber = " + randomNumber);
+        if (allProducts.size() == 0){
+            rn = new Random();
+            randomNumber = rn.nextInt(allProductsAlternatif.size());
+            System.out.println("randomNumber = " + randomNumber);
+        }else{
+            rn = new Random();
+            randomNumber = rn.nextInt(allProducts.size());
+            System.out.println("randomNumber = " + randomNumber);
+        }
 
         BrowserUtils.waitFor(1);
         WebElement element = allProducts.get(randomNumber);

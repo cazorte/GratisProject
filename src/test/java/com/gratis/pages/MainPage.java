@@ -89,7 +89,7 @@ public class MainPage extends TestBase {
         BrowserUtils.waitFor(1);
         WebElement element = altBaslik.get(a);
         System.out.println("seçilen rastgele alt başlık = " + element.getText());
-        String text = element.getText().split(" ")[0].toLowerCase();
+        String text = element.getText().replace(","," ").split(" ")[0].toLowerCase();
         String textEnglish = StringUtils.stripAccents(text);
         //System.out.println("textEnglish = " + textEnglish);
 
