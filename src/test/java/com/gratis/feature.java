@@ -1,17 +1,17 @@
 package com.gratis;
 
+import com.gratis.pages.MainPage;
 import org.junit.Test;
 import org.openqa.selenium.Keys;
 
-public class feature {
+public class feature extends MainPage {
 
     @Test
     public void e2eTest(){
 
+        goToMainPage();
 
-       // goToMainPage();
-
-       // validateTitle("Beymen.com – Türkiye’nin Tek Dijital Lüks Platformu");
+        validateTitle("Gratis | Türkiye'nin Kişisel Bakım Marketi");
 
        // mouseHover("cilt bakımı");
 
