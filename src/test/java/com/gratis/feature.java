@@ -7,19 +7,17 @@ import org.openqa.selenium.Keys;
 public class feature extends MainPage {
 
     @Test
-    public void e2eTest(){
+    public void e2eTest() {
 
         goToMainPage();
 
         validateTitle("Gratis | Türkiye'nin Kişisel Bakım Marketi");
 
-       // mouseHover("cilt bakımı");
+        mouseHover(ciltBakimi);
 
-       //  clickSubContentRandom();
+        clickSubContentRandom_Validate();
 
-        // validateUrlContain();
-
-        // chooseCheckBoxes();
+        chooseCheckBoxes();
 
         // validateCheckBoxes();
 
