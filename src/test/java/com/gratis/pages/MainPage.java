@@ -35,9 +35,6 @@ public class MainPage extends TestBase {
     ////div[@class='form-group checkbox-structure']//input[@type='checkbox']
     //.form-group.checkbox-structure
     //@FindBy(xpath = "//div[@class='form-group checkbox-structure']//input[@type='checkbox']")
-    @FindBy(css = ".form-group.checkbox-structure")
-    public List<WebElement> checkBox;
-
 
     public void goToMainPage() {
         Driver.get().get(ConfigReader.get("url"));
@@ -52,13 +49,13 @@ public class MainPage extends TestBase {
          Assert.assertEquals(title, actualTitle);
     }
 
-    public void mouseHover(WebElement buton){
+    public void mouseHover(WebElement button){
 
-        BrowserUtils.waitForClickablility(buton, 5);
+        BrowserUtils.waitForClickablility(button, 5);
 
-        Actions action = new Actions(driver);
+        Actions action = new Actions(Driver.get());
 
-        action.moveToElement(buton).perform();
+        action.moveToElement(button).perform();
 
     }
 
@@ -68,79 +65,44 @@ public class MainPage extends TestBase {
 
         try {
             //Store the web element
-            WebElement element = driver.findElement(By.cssSelector(".sp-fancybox-iframe.sp-fancybox-skin.sp-fancybox-iframe-5388"));
+            WebElement element = Driver.get().findElement(By.cssSelector(".sp-fancybox-iframe.sp-fancybox-skin.sp-fancybox-iframe-5388"));
             BrowserUtils.waitForVisibility(element, 5);
-            WebElement iframe = driver.findElement(By.cssSelector(".sp-fancybox-iframe.sp-fancybox-skin.sp-fancybox-iframe-5388"));
+            WebElement iframe = Driver.get().findElement(By.cssSelector(".sp-fancybox-iframe.sp-fancybox-skin.sp-fancybox-iframe-5388"));
 
             //Switch to the frame
-            driver.switchTo().frame(iframe);
+            Driver.get().switchTo().frame(iframe);
 
             //Now we can click the button
-            driver.findElement(By.cssSelector(".fa.fa-times.element-close-button")).click();
+            Driver.get().findElement(By.cssSelector(".fa.fa-times.element-close-button")).click();
 
-            driver.switchTo().defaultContent();
+            Driver.get().switchTo().defaultContent();
         }
         catch(Exception e) {
         e.printStackTrace();
         }
-
+        BrowserUtils.waitForVisibility(altBaslik.get(0), 10);
         System.out.println("altBaslik.size() = " + altBaslik.size());
 
         Random rn = new Random();
         int a = rn.nextInt(altBaslik.size()-1);
         BrowserUtils.waitFor(1);
         WebElement element = altBaslik.get(a);
-        System.out.println("element.getText() = " + element.getText());
+        System.out.println("seçilen rastgele alt başlık = " + element.getText());
         String text = element.getText().split(" ")[0].toLowerCase();
         String textEnglish = StringUtils.stripAccents(text);
-        System.out.println("textEnglish = " + textEnglish);
+        //System.out.println("textEnglish = " + textEnglish);
 
         BrowserUtils.waitForClickablility(element,5);
         element.click();
         BrowserUtils.waitFor(3);
         String actualResult = Driver.get().getCurrentUrl();
-        System.out.println("actualResult = " + actualResult);
+        System.out.println("mevcut URL = " + actualResult);
 
         Assert.assertTrue(actualResult.contains(textEnglish));
 
     }
 
-    public void chooseCheckBoxes(){
 
-        BrowserUtils.waitFor(2);
-        System.out.println("checkBox.size() = " + checkBox.size());
-
-        Random rn = new Random();
-        int firstRandomNumber = rn.nextInt(checkBox.size());
-        System.out.println("firstRandomNumber = " + firstRandomNumber);
-
-        BrowserUtils.waitFor(1);
-        WebElement element = checkBox.get(firstRandomNumber);
-        element.click();
-
-        BrowserUtils.waitFor(2);
-
-        Random rn2 = new Random();
-        int secondRandomNumber = rn2.nextInt(checkBox.size());
-
-        while (firstRandomNumber == secondRandomNumber){
-            secondRandomNumber = rn2.nextInt(checkBox.size());
-        }
-        System.out.println("rn2 = " + secondRandomNumber);
-
-        WebElement element2 = checkBox.get(secondRandomNumber);
-
-        element2.click();
-
-
-
-
-
-
-
-
-
-    }
 
 
 }

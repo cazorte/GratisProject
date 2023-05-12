@@ -1,25 +1,32 @@
 package com.gratis;
 
+import com.gratis.pages.CiltBakimi;
 import com.gratis.pages.MainPage;
+import com.utils.TestBase;
 import org.junit.Test;
-import org.openqa.selenium.Keys;
 
-public class feature extends MainPage {
+import org.openqa.selenium.WebDriver;
 
+import org.openqa.selenium.interactions.Actions;
+
+public class feature {
+
+    MainPage mainPage = new MainPage();
+    CiltBakimi ciltBakimiPage = new CiltBakimi();
     @Test
     public void e2eTest() {
 
-        goToMainPage();
+        mainPage.goToMainPage();
 
-        validateTitle("Gratis | Türkiye'nin Kişisel Bakım Marketi");
+        mainPage.validateTitle("Gratis | Türkiye'nin Kişisel Bakım Marketi");
 
-        mouseHover(ciltBakimi);
+        mainPage.mouseHover(mainPage.ciltBakimi);
 
-        clickSubContentRandom_Validate();
+        mainPage.clickSubContentRandom_Validate();
 
-        chooseCheckBoxes();
+        ciltBakimiPage.chooseCheckBoxes();
 
-        // validateCheckBoxes();
+        ciltBakimiPage.validateCheckBoxes();
 
         // chooseOneProduct();
 
