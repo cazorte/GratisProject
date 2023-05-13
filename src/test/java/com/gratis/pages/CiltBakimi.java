@@ -40,7 +40,7 @@ public class CiltBakimi extends TestBase {
 
     public void chooseCheckBoxes(){
 
-        BrowserUtils.waitFor(2);
+        BrowserUtils.waitFor(5);
         System.out.println("checkBox.size() = " + checkBox.size());
 
         Random rn = new Random();

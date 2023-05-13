@@ -49,5 +49,6 @@ public class feature {
 
         loginBox.textToPassword(loginBox.readExcelFile()[1]);
 
+        loginBox.closeBox();
     }
 }

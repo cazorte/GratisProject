@@ -27,6 +27,9 @@ public class LoginBox extends TestBase {
     @FindBy(xpath = "//input[@data-bind='validatableValue: password']")
     public WebElement password;
 
+    @FindBy(xpath = "//*[@id='login-register-modal']/div/div/div[1]/button")
+    public WebElement closeX;
+
     public void validateLoginPage() {
 
         String actualText = BrowserUtils.waitForVisibility(loginBoxText,10).getText();
@@ -61,6 +64,13 @@ public class LoginBox extends TestBase {
             rowArray[i] = dataArray[0][i].trim();
         }
         return rowArray;
+    }
+
+    public void closeBox(){
+
+        BrowserUtils.waitForVisibility(closeX,10);
+        closeX.click();
+
     }
 
 

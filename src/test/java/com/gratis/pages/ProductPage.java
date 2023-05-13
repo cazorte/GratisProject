@@ -65,7 +65,7 @@ public class ProductPage extends TestBase {
         fileInputStream.close();
 
         } catch (Exception e) {
-            System.out.println("yemedi");
+            //System.out.println("yemedi");
             e.printStackTrace();
         }
 
