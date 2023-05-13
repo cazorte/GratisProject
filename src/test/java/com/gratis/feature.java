@@ -1,6 +1,7 @@
 package com.gratis;
 
 import com.gratis.pages.CiltBakimi;
+import com.gratis.pages.LoginBox;
 import com.gratis.pages.MainPage;
 import com.gratis.pages.ProductPage;
 import com.utils.TestBase;
@@ -15,6 +16,7 @@ public class feature {
     MainPage mainPage = new MainPage();
     CiltBakimi ciltBakimiPage = new CiltBakimi();
     ProductPage productPage = new ProductPage();
+    LoginBox loginBox = new LoginBox();
 
     @Test
     public void e2eTest() {
@@ -37,13 +39,13 @@ public class feature {
 
         productPage.textToExcelColumn("ürün tutarı", 2);
 
-        // addToBasket();
+        productPage.addToBasket();
 
-        // validateLoginPage();
+        loginBox.validateLoginPage();
 
-        // textToUsername(readExcelFile()[0])
+        loginBox.textToUsername(loginBox.readExcelFile()[0]);
 
-        // textToPassword(readExcelFile()[1])
+        loginBox.textToPassword(loginBox.readExcelFile()[1]);
 
     }
 }

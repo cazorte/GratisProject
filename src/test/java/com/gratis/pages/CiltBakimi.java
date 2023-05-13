@@ -107,16 +107,21 @@ public class CiltBakimi extends TestBase {
             rn = new Random();
             randomNumber = rn.nextInt(allProductsAlternatif.size());
             System.out.println("randomNumber = " + randomNumber);
+            BrowserUtils.waitFor(1);
+            WebElement element = allProductsAlternatif.get(randomNumber);
+            js.executeScript("arguments[0].click();", element);
         }else{
             rn = new Random();
             randomNumber = rn.nextInt(allProducts.size());
             System.out.println("randomNumber = " + randomNumber);
+            BrowserUtils.waitFor(1);
+            WebElement element = allProducts.get(randomNumber);
+            js.executeScript("arguments[0].click();", element);
         }
 
-        BrowserUtils.waitFor(1);
-        WebElement element = allProducts.get(randomNumber);
 
-        js.executeScript("arguments[0].click();", element);
+
+
 
     }
 

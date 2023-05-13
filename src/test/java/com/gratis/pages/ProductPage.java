@@ -5,6 +5,7 @@ import com.utils.Driver;
 import com.utils.ExcelUtil;
 import com.utils.TestBase;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -21,6 +22,10 @@ public class ProductPage extends TestBase {
     @FindBy(xpath = "//g-price[@class='pdp-price pdp-price-main']//span[@class='gr-price__amount']")
     public WebElement productPrice;
 
+    // //ul[@class='product-options']//*[.='SEPETE EKLE']
+    @FindBy(xpath = "//ul[@class='product-options']//*[.='SEPETE EKLE']")
+    public WebElement addBasket;
+
     public void textToExcelColumn(String name, int column){
 
         BrowserUtils.waitForVisibility(productName,10);
@@ -34,12 +39,22 @@ public class ProductPage extends TestBase {
 
         if (name.equals("ürün bilgisi")){
 
-            excelUtil.setCellData("asd",2,5);
+           // excelUtil.setCellData("asd",2,5);
 
         }else if (name.equals("ürün tutarı")){
-            excelUtil.setCellData("qwe",3,6);
+          //  excelUtil.setCellData("qwe",3,6);
 
         }
+    }
+
+    public void addToBasket(){
+
+        JavascriptExecutor js = (JavascriptExecutor) Driver.get();
+        js.executeScript("window.scrollBy(0,750)");
+        BrowserUtils.waitForClickablility(addBasket,10);
+        addBasket.click();
+
+
     }
 
 
