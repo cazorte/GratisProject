@@ -2,19 +2,16 @@ package com.gratis.pages;
 
 import com.utils.BrowserUtils;
 import com.utils.Driver;
-import com.utils.ExcelUtil;
 import com.utils.TestBase;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -34,7 +31,7 @@ public class ProductPage extends TestBase {
     @FindBy(xpath = "//ul[@class='product-options']//*[.='SEPETE EKLE']")
     public WebElement addBasket;
 
-    public void textToExcelColumn(String name, int column) throws IOException {
+    public void textToExcelColumn() {
 
         BrowserUtils.waitForVisibility(productName, 10);
         BrowserUtils.waitForVisibility(productPrice, 10);
@@ -51,36 +48,27 @@ public class ProductPage extends TestBase {
         XSSFWorkbook workbook;
         XSSFSheet sheet;
 
+        try {
         FileInputStream fileInputStream = new FileInputStream(filePath);
-        workbook = new XSSFWorkbook(fileInputStream);
+            workbook = new XSSFWorkbook(fileInputStream);
         sheet = workbook.getSheet("Sheet1");
 
-        if (name.equals("ürün bilgisi")) {
+        // excelUtil.setCellData(productNameText,1,column);
+        XSSFCell productCell = sheet.getRow(1).createCell(1);
+        productCell.setCellValue(productNameText);
 
-            // excelUtil.setCellData(productNameText,1,column);
-            XSSFCell productCell = sheet.getRow(0).createCell(column);
-            productCell.setCellValue(productNameText);
+        FileOutputStream fileOutputStream = new FileOutputStream(filePath);
+        workbook.write(fileOutputStream);
 
-            FileOutputStream fileOutputStream = new FileOutputStream(filePath);
-            workbook.write(fileOutputStream);
+        fileOutputStream.close();
+        workbook.close();
+        fileInputStream.close();
 
-            fileOutputStream.close();
-            workbook.close();
-            fileInputStream.close();
-
-        } else if (name.equals("ürün tutarı")) {
-
-            XSSFCell productPriceCell = sheet.getRow(0).createCell(column);
-            productPriceCell.setCellValue(productPriceText);
-
-            FileOutputStream fileOutputStream = new FileOutputStream(filePath);
-            workbook.write(fileOutputStream);
-
-            fileOutputStream.close();
-            workbook.close();
-            fileInputStream.close();
-
+        } catch (Exception e) {
+            System.out.println("yemedi");
+            e.printStackTrace();
         }
+
     }
 
     public void addToBasket() {

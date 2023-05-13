@@ -78,7 +78,7 @@ public class CiltBakimi extends TestBase {
 
         BrowserUtils.waitFor(5);
 
-        BrowserUtils.waitForVisibility(chosenCheckBoxes.get(1),5);
+        BrowserUtils.waitForVisibility(chosenCheckBoxes.get(0),5);
 
         int size = chosenCheckBoxes.size();
 

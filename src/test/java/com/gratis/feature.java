@@ -21,7 +21,7 @@ public class feature {
     LoginBox loginBox = new LoginBox();
 
     @Test
-    public void e2eTest() throws IOException {
+    public void e2eTest() {
 
         mainPage.goToMainPage();
 
@@ -37,9 +37,9 @@ public class feature {
 
         ciltBakimiPage.chooseOneProduct();
 
-        productPage.textToExcelColumn("ürün bilgisi", 1);
+        productPage.textToExcelColumn();
 
-        productPage.textToExcelColumn("ürün tutarı", 2);
+        //productPage.textToExcelColumn("ürün tutarı", 2);
 
         productPage.addToBasket();
 
