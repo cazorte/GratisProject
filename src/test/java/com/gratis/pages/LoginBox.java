@@ -52,7 +52,7 @@ public class LoginBox extends TestBase {
     }
 
     public String[] readExcelFile(){
-        ExcelUtil exc = new ExcelUtil("src/test/Resources/SearchKeywords.xlsx", "Sheet1");
+        ExcelUtil exc = new ExcelUtil("src/test/Resources/prod.xlsx", "Sheet1");
 
         String[][] dataArray = exc.getDataArray();
         String[] rowArray = new String[exc.columnCount()];

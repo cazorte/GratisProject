@@ -104,6 +104,9 @@ public class ExcelUtil {
     }
 
     public void setCellData(String value, int rowNum, int colNum) {
+        System.out.println("value = " + value);
+        System.out.println("rowNum = " + rowNum);
+        System.out.println("colNum = " + colNum);
         Cell cell;
         Row row;
 
@@ -122,6 +125,7 @@ public class ExcelUtil {
 
             fileOut.close();
         } catch (Exception e) {
+            System.out.println("olmadı");
             e.printStackTrace();
         }
     }

@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.interactions.Actions;
 
+import java.io.IOException;
+
 public class feature {
 
     MainPage mainPage = new MainPage();
@@ -19,7 +21,7 @@ public class feature {
     LoginBox loginBox = new LoginBox();
 
     @Test
-    public void e2eTest() {
+    public void e2eTest() throws IOException {
 
         mainPage.goToMainPage();
 
